@@ -7,11 +7,10 @@ typedef enum {
 	green,
 	yellow,
 	blue,
-	reset,
-} color;
+} color_t;
 
 // change the color of which is print on the console
-void change_color (color c) {
+void change_color (color_t c) {
 	switch (c) {
 		case red:
 		printf("\033[31m");
@@ -25,8 +24,6 @@ void change_color (color c) {
 		case blue:
 		printf("\033[34m");
 		break;
-		case reset:
-		printf("\033[0m");
 		default:
 		printf("\033[0m");
 	}
@@ -41,12 +38,12 @@ void print_grid(int * grid, int nb_lines, int nb_cols, int index_column_full, bo
 			if (grid[i * nb_cols + j] == 1) {
 				change_color(red);
 				printf("X");
-				change_color(reset);
+				change_color(-1);
 			}
 			else if (grid[i * nb_cols + j] == 2) {
 				change_color(yellow);
 				printf("0");
-				change_color(reset);
+				change_color(-1);
 			}
 			else
 				printf("-");
